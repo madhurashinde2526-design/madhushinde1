@@ -1,34 +1,65 @@
-// Take user input
-let num1 = parseFloat(prompt("Enter first number: "));
-let num2 = parseFloat(prompt("Enter second number: "));
-let operator = prompt("Enter operator (+, -, *, /): ");
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
 
-let result;
+    <h2>Arithmetic Calculator</h2>
 
-switch (operator) {
-    case "+":
-        result = num1 + num2;
-        break;
+    <label>First Number:</label>
+    <input type="number" id="num1"><br><br>
 
-    case "-":
-        result = num1 - num2;
-        break;
+    <label>Second Number:</label>
+    <input type="number" id="num2"><br><br>
 
-    case "*":
-        result = num1 * num2;
-        break;
+    <label>Select Operator:</label>
+    <select id="operator">
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraction (-)</option>
+        <option value="*">Multiplication (*)</option>
+        <option value="/">Division (/)</option>
+    </select><br><br>
 
-    case "/":
-        if (num2 === 0) {
-            result = "Error! Division by zero is not allowed.";
-        } else {
-            result = num1 / num2;
+    <button onclick="calculate()">Calculate</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            switch (operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+
+                case "-":
+                    result = num1 - num2;
+                    break;
+
+                case "*":
+                    result = num1 * num2;
+                    break;
+
+                case "/":
+                    if (num2 === 0) {
+                        result = "Error! Division by zero is not allowed.";
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+
+                default:
+                    result = "Invalid operator!";
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result;
         }
-        break;
+    </script>
 
-    default:
-        result = "Invalid operator!";
-}
-
-alert("Result: " + result);
-
+</body>
+</html>
